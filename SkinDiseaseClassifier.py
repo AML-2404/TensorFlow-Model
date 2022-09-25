@@ -29,38 +29,45 @@ def renameFiles(dr):
         else:
             continue
 
+#Calling the function:
+
 dr1 = "/Users/thejakamahaulpatha/PycharmProjects/HealthImageClassifier/dataset/test/Basal cell carcinoma"
 dr2 = "/Users/thejakamahaulpatha/PycharmProjects/HealthImageClassifier/dataset/test/Melanoma"
 
-renameFiles(dr1)
-renameFiles(dr2)
+# renameFiles(dr1)
+# renameFiles(dr2)
 
 
 #================================================================================================================================
 
+# 2. Converting Training Data
 
-#
-# # 1. Converting Training Data
-#
-# test_Basal_gray = []
-#
-# dr = "/Users/thejakamahaulpatha/PycharmProjects/HealthImageClassifier/dataset/test/Basal_cell_carcinoma"
-# directory = os.fsencode(dr)
-#
-#
-# for file in os.listdir(directory):
-#     filename = os.fsdecode(file)
-#     # print(filename)
-#     if filename.endswith(".jpg") or filename.endswith(".jpeg") or filename.endswith(".png") or filename.endswith(
-#             ".webp"):
-#         imageResized = Image.open(os.path.join(dr,filename)).resize((28,28))
-#         imageResized.save(os.path.join(dr,filename))
-#         # image = cv2.imread(os.path.join(dr,filename))
-#         # gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-#         # test_Basal_gray.append(gray)
-#
-#     else:
-#         continue
+# 2.1 Resizing the Images
+def resizingImage(dr,size=(28,28)):
+    directory = os.fsencode(dr)
+
+    for file in os.listdir(directory):
+        filename = os.fsdecode(file)
+        if not filename.endswith(".DS_Store"):
+            imageResized = Image.open(os.path.join(dr, filename)).resize(size)
+            imageResized.save(os.path.join(dr, filename))
+
+
+dr = "/Users/thejakamahaulpatha/PycharmProjects/HealthImageClassifier/dataset/test/Basal cell carcinoma"
+# resizingImage(dr)
+
+# 2.2 Converting to Gray Scale
+def convertToGray(dr):
+    test_Basal_gray = []
+    directory = os.fsencode(dr)
+    for file in os.listdir(directory):
+        filename = os.fsdecode(file)
+        if not filename.endswith(".DS_Store"):
+            image = cv2.imread(os.path.join(dr,filename))
+            gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            test_Basal_gray.append(gray)
+
+    return np.array(test_Basal_gray).shape
 
 
 # test_Basal_gray_np = np.array(test_Basal_gray)
