@@ -9,4 +9,5 @@ Challenge 3 (SkinDiseaseClassifier) -> Creating the np array along with the labe
 Solution 3 -> Created a secondary .py file named 'SkinDiseaseClassifier2' and had an iterator run over to append both resized array and label
 
 Challenge 4 (SkinDiseaseClassifier2) -> Validation accuracy not increasing with epochs & Validation Loss increases. 
-Solution 4 -> 
+Possible Reason -> The model is overfitting.
+Solution 4 -> We tried by adding dropout layers but could not come up with a usable accuracy measures, Hence need to keep trying.
