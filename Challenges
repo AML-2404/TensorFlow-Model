@@ -8,3 +8,5 @@ Solution 2 -> Image Preprocessing
 Challenge 3 (SkinDiseaseClassifier) -> Creating the np array along with the labels
 Solution 3 -> Created a secondary .py file named 'SkinDiseaseClassifier2' and had an iterator run over to append both resized array and label
 
+Challenge 4 (SkinDiseaseClassifier2) -> Validation accuracy not increasing with epochs & Validation Loss increases. 
+Solution 4 -> 
