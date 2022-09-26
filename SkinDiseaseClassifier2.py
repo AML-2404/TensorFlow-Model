@@ -105,12 +105,15 @@ datagen.fit(x_train)
 model = Sequential()
 model.add(Conv2D(32,3,padding="same", activation="relu", input_shape=(224,224,3)))
 model.add(MaxPool2D())
+# model.add(Dropout(0.2))
 
 model.add(Conv2D(32, 3, padding="same", activation="relu"))
 model.add(MaxPool2D())
 
+model.add(Dropout(0.2)) #Added since Validation loss is increasing
 model.add(Conv2D(64, 3, padding="same", activation="relu"))
 model.add(MaxPool2D())
+
 model.add(Dropout(0.4))
 
 model.add(Flatten())
@@ -119,7 +122,7 @@ model.add(Dense(2, activation="softmax"))
 
 model.summary()
 
-opt = Adam(lr=0.001)
+opt = Adam(lr=0.01)
 model.compile(optimizer = opt , loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True) , metrics = ['accuracy'])
 
 history = model.fit(x_train,y_train,epochs = 50 , validation_data = (x_val, y_val))
