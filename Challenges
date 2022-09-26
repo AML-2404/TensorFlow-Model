@@ -1,2 +1,10 @@
-Challenge 1 -> How to get the confusion matrix 
+Challenge 1 (SkinCancerClassifier) -> How to get the confusion matrix 
 Solution 1 -> Getting the of predicted label and actual label to a list and parsing for metric.configuration
+
+
+Challenge 2 (SkindDiseaseClassifier) -> Getting the images renamed / resized / Gray Scaled
+Solution 2 -> Image Preprocessing
+
+Challenge 3 (SkinDiseaseClassifier) -> Creating the np array along with the labels
+Solution 3 -> Created a secondary .py file named 'SkinDiseaseClassifier2' and had an iterator run over to append both resized array and label
+
