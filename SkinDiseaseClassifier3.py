@@ -19,8 +19,8 @@ import os
 import numpy as np
 
 
-labels = ['Carcinoma', 'Melanoma']
-img_size = 225
+labels = ['Actinic Keratosis', 'Eczema']
+img_size = 224
 
 def get_data(data_dir):
     data = []
@@ -36,9 +36,11 @@ def get_data(data_dir):
                 print(e)
     return np.array(data)
 
-train = get_data('/Users/thejakamahaulpatha/PycharmProjects/HealthImageClassifier/dataset2/train')
-val = get_data('/Users/thejakamahaulpatha/PycharmProjects/HealthImageClassifier/dataset2/test')
+train = get_data('/Users/thejakamahaulpatha/PycharmProjects/HealthImageClassifier/dataset3/train')
+val = get_data('/Users/thejakamahaulpatha/PycharmProjects/HealthImageClassifier/dataset3/test')
 
+# print(train.shape)
+# print(val.shape)
 
 # l = []
 # for i in train:
@@ -124,8 +126,9 @@ model.add(Dense(2, activation="softmax"))
 
 model.summary()
 
-opt = Adam(lr=0.01)
+opt = Adam(lr=0.001)
 model.compile(optimizer = opt , loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True) , metrics = ['accuracy'])
+# model.compile(optimizer = opt , loss = tf.keras.losses.KLDivergence() , metrics = ['accuracy'])
 
 history = model.fit(x_train,y_train,epochs = 20 , validation_data = (x_val, y_val))
 
